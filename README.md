@@ -52,14 +52,13 @@ python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path
 
 ## Experimental Results
 
-### Comparison with SOTA
-
+* Comparison with SOTA
 ![](https://github.com/wangguanan/AlignGAN/blob/master/images/results.png)
 
-### Pixel Alignment Module
+* Pixel Alignment Module
 ![](https://github.com/wangguanan/AlignGAN/blob/master/images/images.png)
 
-### Feature ALignment Module
+* Feature ALignment Module
 ![](https://github.com/wangguanan/AlignGAN/blob/master/images/feature-visualization.png)
 
 
