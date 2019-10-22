@@ -1,1 +1,1 @@
-# Pytorch-RGB-Infrared-IR--CrossModality-Person-ReID
+# Pytorch-RGB-Infrared(IR)-Cross-Modality-Person-ReID-Joint-Pixel-and-Feature-Alignment-AlignGAN
