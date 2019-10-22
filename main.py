@@ -41,36 +41,35 @@ def main(config):
 	logger(config)
 
 
-	# automatically resume model from the latest one
-	start_train_epoch = 0
-	if True:
-		root, _, files = os_walk(base.save_model_path)
-		if len(files) > 0:
-			# get indexes of saved models
-			indexes = []
-			for file in files:
-				indexes.append(int(file.replace('.pkl', '').split('_')[-1]))
-
-			# remove the bad-case and get available indexes
-			model_num = len(base.model_list)
-			available_indexes = copy.deepcopy(indexes)
-			for element in indexes:
-				if indexes.count(element) < model_num:
-					available_indexes.remove(element)
-
-			available_indexes = sorted(list(set(available_indexes)), reverse=True)
-			unavailable_indexes = list(set(indexes).difference(set(available_indexes)))
-
-			if len(available_indexes) > 0:  # resume model from the latest model
-				base.resume_model(available_indexes[0])
-				start_train_epoch = available_indexes[0]
-				logger('Time: {}, automatically resume training from the latest step (model {})'.
-				       format(time_now(),available_indexes[0]))
-			else:  #
-				logger('Time: {}, there are no available models')
-
-
 	if config.mode == 'train':
+
+		# automatically resume model from the latest one
+		start_train_epoch = 0
+		if True:
+			root, _, files = os_walk(base.save_model_path)
+			if len(files) > 0:
+				# get indexes of saved models
+				indexes = []
+				for file in files:
+					indexes.append(int(file.replace('.pkl', '').split('_')[-1]))
+
+				# remove the bad-case and get available indexes
+				model_num = len(base.model_list)
+				available_indexes = copy.deepcopy(indexes)
+				for element in indexes:
+					if indexes.count(element) < model_num:
+						available_indexes.remove(element)
+
+				available_indexes = sorted(list(set(available_indexes)), reverse=True)
+				unavailable_indexes = list(set(indexes).difference(set(available_indexes)))
+
+				if len(available_indexes) > 0:  # resume model from the latest model
+					base.resume_model(available_indexes[0])
+					start_train_epoch = available_indexes[0]
+					logger('Time: {}, automatically resume training from the latest step (model {})'.
+						   format(time_now(), available_indexes[0]))
+				else:  #
+					logger('Time: {}, there are no available models')
 
 		# train loop
 		for current_step in range(start_train_epoch, config.warmup_feature_module_steps + config.warmup_pixel_module_steps + config.joint_training_steps):
