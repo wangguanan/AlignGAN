@@ -41,7 +41,6 @@ class Base:
 		self.embeder_restore_path = config.embeder_restore_path
 
 		# [pixel align part] criterion configuration
-		self.train_pixel_part = config.train_pixel_part
 		self.lambda_pixel_tri = config.lambda_pixel_tri
 		self.lambda_pixel_cls = config.lambda_pixel_cls
 
