@@ -70,55 +70,68 @@ def main(config):
 				logger('Time: {}, there are no available models')
 
 
+	if config.mode == 'train':
 
-	# loop
-	for current_step in range(start_train_epoch, config.warmup_feature_module_steps + config.warmup_pixel_module_steps + config.joint_training_steps):
+		# train loop
+		for current_step in range(start_train_epoch, config.warmup_feature_module_steps + config.warmup_pixel_module_steps + config.joint_training_steps):
 
-		# save model. don't be worry, extra models will be automatically deleted for saving storage
-		base.save_model(current_step)
+			# save model every step. extra models will be automatically deleted for saving storage
+			base.save_model(current_step)
 
-		# evaluate reid
-		if current_step in config.evaluate_reid_steps:
-			logger('**********' * 10 + 'test' + '**********' * 10)
-			results = test(config, base, loaders, True)
-			for key in list(results.keys()):
-				logger('Time: {}, {}, {}'.format(time_now(), key, results[key]))
-			logger('')
+			# evaluate reid
+			if current_step in config.evaluate_reid_steps:
+				logger('**********' * 10 + 'evaluate' + '**********' * 10)
+				results = test(config, base, loaders, True)
+				for key in list(results.keys()):
+					logger('Time: {}, {}, {}'.format(time_now(), key, results[key]))
+				logger('')
 
-		# save fake infrared images
-		if current_step >= config.warmup_pixel_module_steps:
-			save_images(base, current_step)
+			# save fake infrared images
+			if current_step >= config.warmup_pixel_module_steps:
+				save_images(base, current_step)
 
 
-		# warm up the feature alignment module
-		if current_step < config.warmup_feature_module_steps:
-			logger('**********' * 10 + 'warmup the feature module' + '**********' * 10)
-			results_names, resluts_values = warmup_feature_module_a_step(config, base, loaders)
-			logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(results_names, resluts_values)))
-			logger('')
+			# warm up the feature alignment module
+			if current_step < config.warmup_feature_module_steps:
+				logger('**********' * 10 + 'warmup the feature module' + '**********' * 10)
+				results_names, resluts_values = warmup_feature_module_a_step(config, base, loaders)
+				logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(results_names, resluts_values)))
+				logger('')
 
-		# warm up the pixel alignment module
-		elif current_step < config.warmup_feature_module_steps + config.warmup_pixel_module_steps:
-			# save fake images
-			save_images(base, current_step)
-			# warm up
-			logger('**********' * 10 + 'warmup the pixel module' + '**********' * 10)
-			results_names, resluts_values = warmup_pixel_module_a_step(config, base, loaders)
-			logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(results_names, resluts_values)))
-			logger('')
+			# warm up the pixel alignment module
+			elif current_step < config.warmup_feature_module_steps + config.warmup_pixel_module_steps:
+				# save fake images
+				save_images(base, current_step)
+				# warm up
+				logger('**********' * 10 + 'warmup the pixel module' + '**********' * 10)
+				results_names, resluts_values = warmup_pixel_module_a_step(config, base, loaders)
+				logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(results_names, resluts_values)))
+				logger('')
 
-		# jointly train the whole model
-		else:
-			logger('**********'*10 + 'train' + '**********'*10 )
-			gan_titles, gan_values, ide_titles, ide_values = train_a_step(config, base, loaders, current_step)
-			logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(gan_titles, gan_values)))
-			logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(ide_titles, ide_values)))
-			logger('')
+			# jointly train the whole model
+			else:
+				logger('**********'*10 + 'train' + '**********'*10 )
+				gan_titles, gan_values, ide_titles, ide_values = train_a_step(config, base, loaders, current_step)
+				logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(gan_titles, gan_values)))
+				logger('Time: {};  Step: {};  {}'.format(time_now(), current_step, analyze_names_and_meter(ide_titles, ide_values)))
+				logger('')
 
-	results = test(config, base, loaders, False)
-	for key in list(results.keys()):
-		logger('Time: {}, {}, {}'.format(time_now(), key, results[key]))
-	logger('')
+		logger('**********' * 10 + 'final test' + '**********' * 10)
+		results = test(config, base, loaders, False)
+		for key in list(results.keys()):
+			logger('Time: {}, {}, {}'.format(time_now(), key, results[key]))
+		logger('')
+
+
+	elif config.mode == 'test':
+
+		base.resume_model_from_path(config.pretrained_model_path, config.pretrained_model_index)
+		logger('**********' * 10 + 'test with pre-trained model' + '**********' * 10)
+		results = test(config, base, loaders, False)
+		for key in list(results.keys()):
+			logger('Time: {}, {}, {}'.format(time_now(), key, results[key]))
+		logger('')
+
 
 
 
@@ -140,7 +153,7 @@ if __name__ == '__main__':
 	parser.add_argument('--class_num', type=int, default=395, help='identity numbers in training set')
 	parser.add_argument('--image_size', type=int, default=128, help='image size for pixel alignment module,. in feature alignment module, images will be automatically reshaped to 384*192')
 
-	# restore configuration
+	# restore configuration, used for debug, please don't change them
 	parser.add_argument('--G_rgb2ir_restore_path', type=str, default='None')
 	parser.add_argument('--G_ir2rgb_restore_path', type=str, default='None')
 	parser.add_argument('--D_ir_restore_path', type=str, default='None')
@@ -176,6 +189,11 @@ if __name__ == '__main__':
 	parser.add_argument('--number_shots', type=str, nargs='+', default=['single', 'multi'], help='')
 	parser.add_argument('--matlab', type=str, default='none', help='in default, we use python evaluation code. additionally, we also support matlab evaluation version. please see code for more details')
 	parser.add_argument('--evaluate_reid_steps', nargs='+', type=int, default=[100])
+
+	# test configuration
+	parser.add_argument('--pretrained_model_path', type=str, default='', help='please download the pretrained model at first, and then set path')
+	parser.add_argument('--pretrained_model_index', type=int, default=None, help='')
+
 
 	# parse
 	config = parser.parse_args()
