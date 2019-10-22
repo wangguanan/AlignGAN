@@ -40,6 +40,12 @@ python main.py --dataset_path sysu-mm01-path --mode train
 
 ## Test with Pre-trained Model
 * Download pre-trained model from [Google Drive](https://drive.google.com/drive/folders/1FGKrs02Z7Omw3z5wOqClpuzYNFo-LrWw?usp=sharing) 
+* Run
+```
+# test with pre-trained model, please sysu-mm01-path and pre-trained-model-path with your own paths
+python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model pre-trained-model-path
+```
+
 
 
 
