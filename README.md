@@ -1,4 +1,23 @@
-# RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment
+# AlignGAN
+
+This is the official implementation for AlignGAN(ICCV2019). Please refer our paper for more details:
+
+**RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment** [[Paper](https://arxiv.org/abs/1910.05839)]
+
+Guan'an Wang, Tianzhu Zhang, Jian Cheng, Si Liu, Yang Yang, Zengguang Hou
+
+## Bibtex
+
+If you find the code useful, please consider citing our paper:
+```
+@InProceedings{Wang_2019_AlignGAN,
+author = {Wang, Guan'an and Zhang, Tianzhu and Cheng, Jian and Liu, Si and Yang, Yang and Hou, Zengguang},
+title = {RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment},
+booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+year = {2019}
+}
+```
+
 
 * **Introduction**: This project re-implements the strong person re-identification baseline: Bag of Tricks ([paper](https://arxiv.org/abs/1903.07071) and [official code](https://github.com/michuanhaohao/reid-strong-baseline)).
 
