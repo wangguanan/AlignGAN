@@ -43,7 +43,7 @@ python main.py --dataset_path sysu-mm01-path --mode train
 ```
 
 ## Test with Pre-trained Model
-* pretrained model [Google Drive](https://drive.google.com/drive/folders/1FGKrs02Z7Omw3z5wOqClpuzYNFo-LrWw?usp=sharing), please download all the 8 files into a folder. 
+* pretrained model ([Google Drive](https://drive.google.com/drive/folders/1FGKrs02Z7Omw3z5wOqClpuzYNFo-LrWw?usp=sharing)), please download all the 8 files into a folder. 
 * test with the pre-trained model
 ```
 # test with pretrained model, please sysu-mm01-path and pretrained-model-path with your own paths
