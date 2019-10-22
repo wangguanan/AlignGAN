@@ -1,6 +1,6 @@
 # AlignGAN
 
-![](https://github.com/wangguanan/AlignGAN/blob/master/images/framework.jpg)
+
 
 This is the official implementation for AlignGAN(ICCV2019). Please refer our paper for more details:
 
@@ -8,7 +8,7 @@ This is the official implementation for AlignGAN(ICCV2019). Please refer our pap
 
 Guan'an Wang, Tianzhu Zhang, Jian Cheng, Si Liu, Yang Yang and Zengguang Hou
 
-
+![](https://github.com/wangguanan/AlignGAN/blob/master/images/framework.jpg)
 
 
 ## Bibtex
