@@ -47,7 +47,7 @@ python main.py --dataset_path sysu-mm01-path --mode train
 * test 
 ```
 # test with pretrained model, please sysu-mm01-path and pretrained-model-path with your own paths
-python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model pretrained-model-path
+python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path pretrained-model-path --pretrained_model_index 250
 ```
 
 
