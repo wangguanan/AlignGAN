@@ -34,7 +34,7 @@ year = {2019}
 
 ## Run
 ```
-# train
+# train, please replace sysu-mm01-path with your own path
 python main.py --dataset_path sysu-mm01-path --mode train
 ```
 
