@@ -1,4 +1,4 @@
-# Pytorch-RGB-Infrared(IR)-Cross-Modality-Person-ReID-Joint-Pixel-and-Feature-Alignment-AlignGAN
+# RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment
 
 * **Introduction**: This project re-implements the strong person re-identification baseline: Bag of Tricks ([paper](https://arxiv.org/abs/1903.07071) and [official code](https://github.com/michuanhaohao/reid-strong-baseline)).
 
@@ -13,8 +13,8 @@
 * Memory >= 20G
 
 ## Dataset Preparation
-* [Market-1501 Dataset](https://jingdongwang2017.github.io/Projects/ReID/Datasets/Market-1501.html) and [DukeMTMC-reID Dataset](https://github.com/layumi/DukeMTMC-reID_evaluation)
-* Download and extract both anywhere
+* [SYSU-MM01 Dataset](https://github.com/wuancong/SYSU-MM01)
+* Download and extract it anywhere
 
 ## Run
 ```
