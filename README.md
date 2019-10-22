@@ -28,7 +28,7 @@ year = {2019}
 
 
 ## Dataset Preparation
-* [SYSU-MM01 Dataset](https://github.com/wuancong/SYSU-MM01)
+* SYSU-MM01 Dataset [[link](https://github.com/wuancong/SYSU-MM01)]
 * Download and extract it anywhere
 
 
