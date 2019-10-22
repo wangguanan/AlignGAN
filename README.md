@@ -4,7 +4,7 @@
 
 This is the official implementation for AlignGAN(ICCV2019). Please refer our paper for more details:
 
-**RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment** [[Paper](https://arxiv.org/abs/1910.05839)]
+**[ICCV2019, [Paper](https://arxiv.org/abs/1910.05839)]RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment** 
 
 Guan'an Wang, Tianzhu Zhang, Jian Cheng, Si Liu, Yang Yang and Zengguang Hou
 
