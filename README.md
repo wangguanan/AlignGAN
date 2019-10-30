@@ -52,6 +52,9 @@ python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path
 
 ## Experimental Results
 
+* settings
+  * we train our model with 4 GTX1080ti GPUs.
+
 * Comparison with SOTA
 ![](https://github.com/wangguanan/AlignGAN/blob/master/images/results.png)
 
