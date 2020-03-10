@@ -28,7 +28,6 @@ year = {2019}
 ## Dependencies
 * [Anaconda (Python 3.7)](https://www.anaconda.com/download/)
 * [PyTorch 1.1.0](http://pytorch.org/)
-* [HexHamming](https://pypi.org/project/hexhamming/)
 * GPU Memory >= 40G
 * Memory >= 20G
 
