@@ -33,10 +33,9 @@ year = {2019}
 * Memory >= 20G
 
 
+
 ## Dataset Preparation
-* Market-1501
-* DukeMTMC-reID
-* Market-1501+500K (will support soon)
+* SYSU-MM01 Dataset [[link](https://github.com/wuancong/SYSU-MM01)]
 
 
 ## Train
@@ -56,7 +55,17 @@ python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path
 ## Experimental Results
 
 * Settings
-  * We trained our model with 1 RTX2080ti.
+  * We trained our model with 4 GTX1080ti GPUs.
+
+* Comparison with SOTA
+![](https://github.com/wangguanan/AlignGAN/blob/master/images/results.png)
+
+* Pixel Alignment Module
+![](https://github.com/wangguanan/AlignGAN/blob/master/images/images.png)
+
+* Feature ALignment Module
+![](https://github.com/wangguanan/AlignGAN/blob/master/images/feature-visualization.png)
+
 
 
 ## Contacts
