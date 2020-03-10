@@ -28,12 +28,15 @@ year = {2019}
 ## Dependencies
 * [Anaconda (Python 3.7)](https://www.anaconda.com/download/)
 * [PyTorch 1.1.0](http://pytorch.org/)
+* [HexHamming](https://pypi.org/project/hexhamming/)
 * GPU Memory >= 40G
 * Memory >= 20G
 
 
 ## Dataset Preparation
-* SYSU-MM01 Dataset [[link](https://github.com/wuancong/SYSU-MM01)]
+* Market-1501
+* DukeMTMC-reID
+* Market-1501+500K (will support soon)
 
 
 ## Train
@@ -53,17 +56,7 @@ python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path
 ## Experimental Results
 
 * Settings
-  * We trained our model with 4 GTX1080ti GPUs.
-
-* Comparison with SOTA
-![](https://github.com/wangguanan/AlignGAN/blob/master/images/results.png)
-
-* Pixel Alignment Module
-![](https://github.com/wangguanan/AlignGAN/blob/master/images/images.png)
-
-* Feature ALignment Module
-![](https://github.com/wangguanan/AlignGAN/blob/master/images/feature-visualization.png)
-
+  * We trained our model with 1 RTX2080ti.
 
 
 ## Contacts
