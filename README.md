@@ -15,7 +15,7 @@ Guan'an Wang, Tianzhu Zhang, Jian Cheng, Si Liu, Yang Yang and Zengguang Hou
 
 If you find the code useful, please consider citing our paper:
 ```
-@InProceedings{Wang_2019_ICCV,
+@InProceedings{wang2019aligngan,
 author = {Wang, Guan'an and Zhang, Tianzhu and Cheng, Jian and Liu, Si and Yang, Yang and Hou, Zengguang},
 title = {RGB-Infrared Cross-Modality Person Re-Identification via Joint Pixel and Feature Alignment},
 booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
