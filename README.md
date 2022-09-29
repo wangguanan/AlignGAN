@@ -65,6 +65,9 @@ python main.py --dataset_path sysu-mm01-path --mode test --pretrained_model_path
 * Feature ALignment Module
 ![](https://github.com/wangguanan/AlignGAN/blob/master/images/feature-visualization.png)
 
+License
+
+This repo is released under the MIT License.
 
 
 ## Contacts
